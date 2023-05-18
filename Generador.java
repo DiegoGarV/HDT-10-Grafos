@@ -13,7 +13,7 @@ public class Generador {
         hm = new HashMap<>();
     }
 
-    public void leerArchivo() throws IOException{
+    public void leerArchivo() {
         String nombreArchivo = "logistica.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
