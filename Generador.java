@@ -41,14 +41,14 @@ public class Generador {
 
                 for (int i = 0; i < hm.size(); i++) {
                     List<Object> DivMatriz = matriz.get(i);
-                    int cont = 0;
+                    int o = 0;
                     while (DivMatriz.size() < hm.size()) {
-                        if (cont == i) {
+                        if (o == i) {
                             DivMatriz.add(0);
                         } else {
                             DivMatriz.add("NA");
                         }
-                        cont++;
+                        o++;
                     }
 
                 matriz.add(fila);
