@@ -12,7 +12,8 @@ public class Generador {
         matriz = new ArrayList<>();
     }
 
-    public void leerArchivo(String nombreArchivo) throws IOException{
+    public void leerArchivo() throws IOException{
+        String nombreArchivo = "logistica.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
