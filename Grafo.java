@@ -130,4 +130,50 @@ public class Grafo {
         }
         return key;
     }
+
+    public String centro(){
+        List<Object> maximos = new Vector<>();
+        for (int i=0;i<hm.size();i++){
+            List<Object> lugar = ciudades.get(i);
+
+            if (i==0){
+                maximos = lugar;
+            }
+            else {
+                for (int j=0;j<lugar.size();j++){
+                    if (!maximos.get(j).equals("INF")){
+                        if (lugar.get(j).equals("INF")){
+                            maximos.set(j, "INF");
+                        }
+                        else if ((int) maximos.get(j)<(int) lugar.get(j)){
+                            maximos.set(j, lugar.get(j));
+                        }
+                    }
+                }
+            }
+        }
+
+        Object centro = 0;
+        int contador = 0;
+
+        while (contador<maximos.size()){
+            if (contador==0){
+                centro = maximos.get(0);
+            }
+            else if (!maximos.get(contador).equals("INF")){
+                if (centro.equals("INF")){
+                    centro = maximos.get(contador);
+                }
+                else {
+                    if ((int) maximos.get(contador)<(int) centro){
+                        centro = maximos.get(contador);
+                    }
+                }
+            }
+            contador++;
+        }
+        int valor = maximos.indexOf(centro);
+        return KeyFromValue(valor);
+    }
+
 }
