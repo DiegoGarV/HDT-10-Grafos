@@ -28,6 +28,28 @@ public class Generador {
 
                     throw new IllegalArgumentException("Existe un error con la cantidad de datos en una de las filas");
                 }
+                
+                if (!(hm.containsKey(elementos[0]))) {
+                    hm.put(elementos[0], hm.size());
+                    matriz.add(new ArrayList<>());
+                }
+                if (!(hm.containsKey(elementos[1]))) {
+
+                    hm.put(elementos[1], hm.size());
+                    matriz.add(new ArrayList<>());
+                }
+
+                for (int i = 0; i < hm.size(); i++) {
+                    List<Object> DivMatriz = matriz.get(i);
+                    int cont = 0;
+                    while (DivMatriz.size() < hm.size()) {
+                        if (cont == i) {
+                            DivMatriz.add(0);
+                        } else {
+                            DivMatriz.add("NA");
+                        }
+                        cont++;
+                    }
 
                 matriz.add(fila);
             }
@@ -43,6 +65,14 @@ public class Generador {
             }
             System.out.println();
         }
+    }
+    
+    public HashMap<String, Integer> getHm() {
+        return hm;
+    }
+    
+    public List<List<Object>> getMatriz() {
+        return matriz;
     }
 }
 
