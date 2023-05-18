@@ -11,14 +11,15 @@ import java.util.*;
 public class Grafo {
     private List<List<Object>> tiempos = new ArrayList<>();
     private List<List<Object>> ciudades = new ArrayList<>();
-    private Generador generador = new Generador(); 
-
+    private Generador generador = new Generador();
+    private HashMap<String,Integer> hm = new HashMap<>();
+    private List<List<Object>> lp = new ArrayList<>();
     
     
     public Grafo(){
         generador.leerArchivo();
-        HashMap<String,Integer> hm = generador.getHm();
-        List<List<Object>> lp = generador.getMatriz();
+        hm = generador.getHm();
+        lp = generador.getMatriz();
     }
 
     
