@@ -9,37 +9,19 @@
 import java.util.*;
 
 public class Grafo {
-    public List<List<Object>> tiempos = new ArrayList<>();
-    public List<List<Object>> ciudades = new ArrayList<>();
+    private List<List<Object>> tiempos = new ArrayList<>();
+    private List<List<Object>> ciudades = new ArrayList<>();
+    private Generador generador = new Generador(); 
 
-    //ESTOS SON SOLO PARA PRUEBA, BORRAR DESPUES
-    Map<String, Integer> hm = new HashMap<>();
-    public void aaa(){
-        hm.put("BuenosAires", 0);
-        hm.put("Lima", 1);
-        hm.put("Quito", 2);
-    }
-    List<List<Object>> lp = new ArrayList<>();
-    public void bbb(){
-        List<Object> BAaL = new ArrayList<>();
-        BAaL.add(5);
-        BAaL.add(10);
-        BAaL.add(15);
-        BAaL.add(20);
-
-        List<Object> LaQ = new ArrayList<>();
-        LaQ.add(15);
-        LaQ.add(20);
-        LaQ.add(24);
-        LaQ.add(70);
-
-        lp.add(BAaL);
-    }
-    //FIN DE LOS QUE SON DE PRUEBA
+    
     
     public Grafo(){
-
+        generador.leerArchivo();
+        HashMap<String,Integer> hm = generador.getHm();
+        List<List<Object>> lp = generador.getMatriz();
     }
+
+    
 
     public List<List<Object>> matrizTrabajadora(int tipoClima){
         List<List<Object>> matrizAdy = new ArrayList<>(); 

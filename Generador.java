@@ -2,14 +2,15 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Generador {
     private List<List<Object>> matriz;
+    private HashMap<String, Integer> hm;
 
     public Generador() {
         matriz = new ArrayList<>();
+        hm = new HashMap<>();
     }
 
     public void leerArchivo() throws IOException{
@@ -50,10 +51,12 @@ public class Generador {
                         }
                         o++;
                     }
+                }
 
                 matriz.add(fila);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
