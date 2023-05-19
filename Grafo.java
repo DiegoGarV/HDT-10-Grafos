@@ -176,17 +176,11 @@ public class Grafo {
         return KeyFromValue(valor);
     }
 
-    public String quitarCamino(List<List<Object>> matrizAdy, String ciudadSalida, String ciudadLlegada){
+    public String quitarCamino(List<List<Object>> matrizAdy, int ciudadSalida, int ciudadLlegada){
         String mensaje = "";
-        try{
-            int sal = hm.get(ciudadSalida);
-            int lle = hm.get(ciudadLlegada);
-            matrizAdy.get(sal).set(lle, "INF");
-            floydselo(matrizAdy);
-            mensaje = "El camino de "+ciudadSalida+" a "+ciudadLlegada+" se quito.";
-        } catch (NullPointerException e){
-           mensaje = "Estas ciudades no fueron encontradas"; 
-        }
+        matrizAdy.get(ciudadSalida).set(ciudadLlegada, "INF");
+        floydselo(matrizAdy);
+        mensaje = "El camino de "+KeyFromValue(ciudadSalida)+" a "+KeyFromValue(ciudadLlegada)+" se quito.";
         return mensaje;
     }
 
