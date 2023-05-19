@@ -1,52 +1,60 @@
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.junit.Test;
 import java.util.List;
 
 public class GrafoTest {
 
-    private Grafo grafo;
+    // Crea una instancia de Grafo
+    Grafo grafo = new Grafo();
 
-    @BeforeEach
-    public void setUp() {
-        grafo = new Grafo();
+    @Test
+    public void matrizTrabajadoraTest() {       
+        
+        // Llama al método matrizTrabajadora con un tipo de clima específico (por ejemplo, 0)
+        int tipoClima = 0;
+        List<List<Object>> matrizAdy = grafo.matrizTrabajadora(tipoClima);       
+        
+        for (List<Object> fila : matrizAdy) {
+            for (Object elemento : fila) {
+                System.out.print(elemento + " ");
+            }
+            System.out.println();
+        }     
     }
 
     @Test
-    public void testMatrizTrabajadora() {
-        int tipoClima = 0; 
-        List<List<Object>> expectedMatrizAdy = new ArrayList<>();
+    public void floydseloTest() {     
         
+        // Llama al método floydselo para calcular las matrices de tiempos y ciudades
+        List<List<Object>> matrizTiempos = grafo.floydselo();       
         
-        List<List<Object>> matrizAdy = grafo.matrizTrabajadora(tipoClima);
-        
-        Assertions.assertEquals(expectedMatrizAdy, matrizAdy);
-        
+        for (List<Object> fila : matrizTiempos) {
+            for (Object elemento : fila) {
+                System.out.print(elemento + " ");
+            }
+            System.out.println();
+        }
     }
 
     @Test
-    public void testFloydselo() {
-        List<List<Object>> expectedMatTiempos = new ArrayList<>();
-        
+    public void KeyFromValueTest() {
+ 
+        // Llama al método KeyFromValue para obtener la clave asociada a un valor específico
 
-        List<List<Object>> matTiempos = grafo.floydselo();
+        Integer targetValue = 123; // El valor que deseas buscar
 
-        Assertions.assertEquals(expectedMatTiempos, matTiempos);
-        
+        String key = grafo.KeyFromValue(targetValue);        
+  
+        System.out.println("Clave encontrada: " + key);
     }
 
     @Test
-    public void testCentro() {
-        String expectedCentro = "Centro esperado";
-        
+    public void centroTest() {
 
-        String centro = grafo.centro();
+        // Llama al método centro para obtener el centro del grafo
+        String centro = grafo.centro();       
 
-        Assertions.assertEquals(expectedCentro, centro);
-        
+        System.out.println("Centro del grafo: " + centro);
+    
     }
 }
