@@ -30,17 +30,11 @@ public class Main {
                 case 1:
                     System.out.println("----------Opción seleccionada: Generar ruta----------");
 
-                    System.out.println("Ciudades disponibles:");                    
-
-                    // for (String ciudad : generador.getHm().keySet()) {
-                    //     System.out.println(ciudad);
-                    // }
+                    System.out.println("Ciudades disponibles:");                   
                     
-                    //for(int i = 0; i < hm.size(); i++ ){
-	
-	                //System.out.print(i + keyfromValue(i));
-
-                    //}
+                    for(int i = 0; i < grafo.hm.size(); i++ ){
+	                    System.out.println(i + grafo.KeyFromValue(i));
+                    }
                     
                     System.out.print("Ingrese la ciudad de origen: ");
                     int origen = scanner.nextInt();
@@ -48,6 +42,7 @@ public class Main {
                     System.out.print("Ingrese la ciudad de destino: ");
                     int destino = scanner.nextInt();
 
+                    System.out.println(grafo.ruta(origen,destino));
 
                     break;
 
@@ -60,9 +55,21 @@ public class Main {
 
                     break;
                 case 3:
+                    int op2 = 0;
+                    String newCS = "";
+                    String newCL = "";
+                    int normal = 0;
+                    int lluvia = 0;
+                    int nieve = 0;
+                    int tormenta = 0;
                     System.out.println("----------Opción seleccionada: Modificar grafo----------");
-                    
-
+                    System.out.println("1. Agregar camino entre ciudades");
+                    System.out.println("2. Quitar camino entre ciudades");
+                    System.out.print("Ingrese una opción: ");
+                    op2 = scanner.nextInt();
+                    if (op2==1){
+                        
+                    }
                     
                     break;
                 case 4:

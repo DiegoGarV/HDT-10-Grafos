@@ -12,7 +12,7 @@ public class Grafo {
     private List<List<Object>> tiempos = new ArrayList<>();
     private List<List<Object>> ciudades = new ArrayList<>();
     private Generador generador = new Generador();
-    private HashMap<String,Integer> hm = new HashMap<>();
+    public HashMap<String,Integer> hm = new HashMap<>();
     private List<List<Object>> lp = new ArrayList<>();
     
     
@@ -212,6 +212,27 @@ public class Grafo {
         lp.get(hm.get(ciudadSalida)).set(hm.get(ciudadLlegada), Arrays.asList(tiempoN, tiempoL, tiempoNi, tiempoT));
         matrizTrabajadora(clima);
         floydselo(matrizAdy);
+
+        return mensaje;
+    }
+
+    public String ruta(int cSalida,int cLlegada){
+        String mensaje = "";
+        int timeR=0;
+        String cityR="";
+        if ((cSalida >= 0 && cSalida<hm.size()) && (cLlegada >= 0 && cLlegada<hm.size())){
+            if(tiempos.get(cSalida).get(cLlegada).equals("INF")){
+                mensaje = "Lo sentimos, no hay forma de llegar a "+KeyFromValue(cLlegada);
+            }
+            else {
+                timeR = (int) tiempos.get(cSalida).get(cLlegada);
+                cityR = (String) ciudades.get(cSalida).get(cLlegada);
+                mensaje = "La ruta mas corta tarda "+timeR+".\n Su recorrido es de "+KeyFromValue(cSalida)+" a "+cityR+" a "+KeyFromValue(cLlegada);
+            }
+        }
+        else{
+            mensaje = "Lo sentimos, el número que marcó no es una opcion disponible.";
+        }
 
         return mensaje;
     }
