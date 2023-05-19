@@ -62,11 +62,11 @@ public class Grafo {
         return matrizAdy;
     } 
 
-    public List<List<Object>> floydselo(){
+    public List<List<Object>> floydselo(List<List<Object>> matrizAdy){
         List<List<Object>>  matTiempos = new ArrayList<>(); 
         List<List<Object>> matCiudades = new ArrayList<>(); 
         int mismo = 0;
-        for(int i=0;i<lp.size();i++){
+        for(int i=0;i<matrizAdy.size();i++){
             List<Object> mut = new ArrayList<>();
             for(int j=0;j<hm.size();j++){
                 //Si es el mismo solo se agruega 0
@@ -82,8 +82,8 @@ public class Grafo {
             matCiudades.add(mut);
         }
 
-        for (int i=0;i<tiempos.size();i++){
-            List<Object> llegada = tiempos.get(i);
+        for (int i=0;i<matrizAdy.size();i++){
+            List<Object> llegada = matrizAdy.get(i);
             List<Object> mut = new ArrayList<>();
             for (int j=0;j<llegada.size();j++){
                 mut.add(llegada.get(j));
@@ -176,13 +176,13 @@ public class Grafo {
         return KeyFromValue(valor);
     }
 
-    public String quitarCamino(String ciudadSalida, String ciudadLlegada){
+    public String quitarCamino(List<List<Object>> matrizAdy, String ciudadSalida, String ciudadLlegada){
         String mensaje = "";
         try{
             int sal = hm.get(ciudadSalida);
             int lle = hm.get(ciudadLlegada);
-            tiempos.get(sal).set(lle, "INF");
-            floydselo();
+            matrizAdy.get(sal).set(lle, "INF");
+            floydselo(matrizAdy);
             mensaje = "El camino de "+ciudadSalida+" a "+ciudadLlegada+" se quito.";
         } catch (NullPointerException e){
            mensaje = "Estas ciudades no fueron encontradas"; 
@@ -194,14 +194,25 @@ public class Grafo {
         return tiempos;
     }
 
-    public String agregarCamino(String ciudadSalida, String ciudadLlegada, int tiempoN, int tiempoL, int tiempoNi, int tiempoT){
+    public String agregarCamino(List<List<Object>> matrizAdy, String ciudadSalida, String ciudadLlegada, int tiempoN, int tiempoL, int tiempoNi, int tiempoT, int clima){
         String mensaje = "";
         List<Object> lista = new ArrayList<>();
         lista.add(tiempoN);
         lista.add(tiempoL);
         lista.add(tiempoNi);
         lista.add(tiempoT);
-        hm.put
+        if (!hm.containsKey(ciudadSalida)){
+            hm.put(ciudadSalida,hm.size());
+            lp.add(new ArrayList<>());
+        }
+        if (!hm.containsKey(ciudadLlegada)){
+            hm.put(ciudadLlegada, hm.size());
+            lp.add(new ArrayList<>());
+        }
+        lp.get(hm.get(ciudadSalida)).set(hm.get(ciudadLlegada), Arrays.asList(tiempoN, tiempoL, tiempoNi, tiempoT));
+        matrizTrabajadora(clima);
+        floydselo(matrizAdy);
+
         return mensaje;
     }
 }

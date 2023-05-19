@@ -53,7 +53,12 @@ public class Generador {
                     }
                 }
 
-                matriz.add(fila);
+                List<String> valores = new ArrayList<>();
+                for (int i=0;i<hm.size();i++){
+                    valores.add(KeyFromValue(i));
+                }
+                List<Object> inicio = matriz.get(hm.get(elementos[0]));
+                inicio.set(hm.get(elementos[1]), Arrays.asList(elementos[2],elementos[3],elementos[4],elementos[5]));
             }
         }
         catch (IOException e) {
@@ -76,6 +81,17 @@ public class Generador {
     
     public List<List<Object>> getMatriz() {
         return matriz;
+    }
+
+    private String KeyFromValue(Integer targetValue){
+        String key = null;
+        for (Map.Entry<String, Integer> entry : hm.entrySet()) {
+            if (entry.getValue().equals(targetValue)) {
+                key = entry.getKey();
+                break; // Stop the loop once the key is found
+            }
+        }
+        return key;
     }
 }
 
