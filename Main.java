@@ -36,6 +36,12 @@ public class Main {
                     //     System.out.println(ciudad);
                     // }
                     
+                    //for(int i = 0; i < hm.size(); i++ ){
+	
+	                //System.out.print(i + keyfromValue(i));
+
+                    //}
+                    
                     System.out.print("Ingrese la ciudad de origen: ");
                     int origen = scanner.nextInt();
 
