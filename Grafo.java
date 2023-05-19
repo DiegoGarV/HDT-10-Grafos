@@ -176,4 +176,27 @@ public class Grafo {
         return KeyFromValue(valor);
     }
 
+    public String quitarCamino(String ciudadSalida, String ciudadLlegada){
+        String mensaje = "";
+        try{
+            int sal = hm.get(ciudadSalida);
+            int lle = hm.get(ciudadLlegada);
+            tiempos.get(sal).set(lle, "INF");
+            floydselo();
+            mensaje = "El camino de "+ciudadSalida+" a "+ciudadLlegada+" se quito.";
+        } catch (NullPointerException e){
+           mensaje = "Estas ciudades no fueron encontradas"; 
+        }
+        return mensaje;
+    }
+
+    public List<List<Object>> mostrarMatriz(){
+        return tiempos;
+    }
+
+    public String agregarCamino(String ciudadSalida, String ciudadLlegada, int tiempoN, int tiempoL, int tiempoNi, int tiempoS){
+        String mensaje = "";
+        
+        return mensaje;
+    }
 }
