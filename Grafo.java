@@ -120,7 +120,7 @@ public class Grafo {
         return this.tiempos;
     } 
 
-    private String KeyFromValue(Integer targetValue){
+    public String KeyFromValue(Integer targetValue){
         String key = null;
         for (Map.Entry<String, Integer> entry : hm.entrySet()) {
             if (entry.getValue().equals(targetValue)) {
