@@ -194,9 +194,14 @@ public class Grafo {
         return tiempos;
     }
 
-    public String agregarCamino(String ciudadSalida, String ciudadLlegada, int tiempoN, int tiempoL, int tiempoNi, int tiempoS){
+    public String agregarCamino(String ciudadSalida, String ciudadLlegada, int tiempoN, int tiempoL, int tiempoNi, int tiempoT){
         String mensaje = "";
-        
+        List<Object> lista = new ArrayList<>();
+        lista.add(tiempoN);
+        lista.add(tiempoL);
+        lista.add(tiempoNi);
+        lista.add(tiempoT);
+        hm.put
         return mensaje;
     }
 }
